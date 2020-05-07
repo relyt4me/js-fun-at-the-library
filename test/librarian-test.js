@@ -1,3 +1,4 @@
+var addBook = require("../src/Library.js").addBook;
 var assert = require("chai").assert;
 var Librarian = require('../src/Librarian.js');
 var createLibrary = require('../src/library.js').createLibrary;
@@ -66,17 +67,17 @@ describe('Librarian (class)', function() {
     assert.equal(bookConfirmation, "Yes, we have The Fifth Season");
   });
 
-  it.skip('should say if requested book is not found', function() {
+  it.skip("should say if requested book is not found", function() {
     var library = createLibrary("Aurora Public Library");
     var librarian = new Librarian("Casey", library);
-    var book = { title: 'The Fifth Season', genre: 'fantasy' }
+    var book = { title: "The Fifth Season", genre: "fantasy" };
 
-    librarian.library.addBook(book);
+    addBook(librarian.library, book);
 
     var bookConfirmation = librarian.findBook("Five Brief Lessons in Physics");
 
     assert.equal(bookConfirmation, "Sorry, we do not have Five Brief Lessons in Physics");
-  });
+});
 
   it.skip('should checkout the book if found', function() {
     var library = createLibrary("Aurora Public Library");
